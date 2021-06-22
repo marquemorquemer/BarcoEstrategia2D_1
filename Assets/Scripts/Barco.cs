@@ -11,6 +11,8 @@ public class Barco : MonoBehaviour
     public GameObject canonR;
 
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +39,5 @@ public class Barco : MonoBehaviour
             canonL.SetActive(false);
             Instantiate(canon, canons1.position, canons1.rotation);
         }
-
     }
 }

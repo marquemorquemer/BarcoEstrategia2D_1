@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    public int damage = 1;
+
+    public Rigidbody2D rb;
     public float speed;
 
     // Start is called before the first frame update
@@ -16,7 +18,15 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = transform.right * speed;
+        rb.velocity = transform.right * speed * Time.deltaTime;
         Destroy(gameObject, 2f);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Health health = other.GetComponent<Health>();
+        if (health == null)
+            return;
+        health.TakeDamage(damage);
     }
 }
