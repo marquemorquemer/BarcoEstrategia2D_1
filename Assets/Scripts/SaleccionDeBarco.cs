@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SaleccionDeBarco : MonoBehaviour
 {
-    public Movement movBarco;
+    public MovimientoHaciaMouse movBarco;
     public Rigidbody2D rb2D;
 
     public float speedBarco = 5;
