@@ -10,7 +10,7 @@ public class Barco : MonoBehaviour
     public GameObject canonL;
     public GameObject canonR;
 
-    public bool isPlayer;
+    public bool isPlayer = true;
     public float timeToShoot = 3;
 
 
