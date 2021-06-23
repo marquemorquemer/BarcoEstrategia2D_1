@@ -10,13 +10,17 @@ public class Barco : MonoBehaviour
     public GameObject canonL;
     public GameObject canonR;
 
-
+    public bool isPlayer;
+    public float timeToShoot = 3;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        if (!isPlayer)
+        {
+            StartCoroutine(ShootingEnemy());
+        }
     }
 
     // Update is called once per frame
@@ -27,17 +31,44 @@ public class Barco : MonoBehaviour
         //    Instantiate(canon, canons.position, canons.rotation);
         //    Instantiate(canon, canons1.position, canons1.rotation);
         //}
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (isPlayer)
         {
-            canonL.SetActive(true);
-            canonR.SetActive(false);
-            Instantiate(canon, canons.position, canons.rotation);
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                canonL.SetActive(true);
+                canonR.SetActive(false);
+                Instantiate(canon, canons.position, canons.rotation);
+            }
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                canonR.SetActive(true);
+                canonL.SetActive(false);
+                Instantiate(canon, canons1.position, canons1.rotation);
+            }
+
         }
-        if (Input.GetKeyDown(KeyCode.X))
+    }
+
+    void ShootBullet(Vector2 dir)
+    {
+        GameObject bulletGO = Instantiate(canon, canons.position, canons.rotation);
+        bulletGO.GetComponent<Bullet>().DirectionBullet(dir);
+        if (isPlayer)
         {
-            canonR.SetActive(true);
-            canonL.SetActive(false);
-            Instantiate(canon, canons1.position, canons1.rotation);
+            bulletGO.GetComponent<Bullet>().target = "Enemy";
+        }
+        //if (!isPlayer)
+        //{
+        //    bulletGO.GetComponent<Bullet>().target = "Player";
+        //}
+    }
+
+    IEnumerator ShootingEnemy()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(timeToShoot);
+            ShootBullet(GetComponent<FollowTarget>().directionFollow);
         }
     }
 }

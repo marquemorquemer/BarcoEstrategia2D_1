@@ -5,9 +5,11 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public int damage = 1;
+    public Vector3 direction;
 
     public Rigidbody2D rb;
     public float speed;
+    public string target;
 
     // Start is called before the first frame update
     void Start()
@@ -24,9 +26,27 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Health health = other.GetComponent<Health>();
-        if (health == null)
-            return;
-        health.TakeDamage(damage);
+        if (other.CompareTag("Player"))
+        {
+            Health health = other.GetComponent<Health>();
+            if (health == null)
+                return;
+            health.TakeDamage(damage);
+            Destroy(gameObject);
+        }
+        else
+        {
+            Health health = other.GetComponent<Health>();
+            if (health == null)
+                return;
+            health.TakeDamage(damage);
+            Destroy(gameObject);
+        }
+
+    }
+
+    public void DirectionBullet(Vector2 dir)
+    {
+        direction = dir;
     }
 }
