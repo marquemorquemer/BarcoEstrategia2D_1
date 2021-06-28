@@ -479,7 +479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 10
-  bullet: {fileID: 887287217917512532, guid: 2cbac40c62a3d7d4a9b35fa91473cabf, type: 3}
+  bullet: {fileID: 1347823540566750080, guid: d3b86e613ddaca848bf1d171d1ef3e27, type: 3}
 --- !u!1 &975541514
 GameObject:
   m_ObjectHideFlags: 0
@@ -1091,7 +1091,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 10
-  bullet: {fileID: 887287217917512532, guid: 2cbac40c62a3d7d4a9b35fa91473cabf, type: 3}
+  bullet: {fileID: 1347823540566750080, guid: d3b86e613ddaca848bf1d171d1ef3e27, type: 3}
 --- !u!1 &1795373538
 GameObject:
   m_ObjectHideFlags: 0
