@@ -68,7 +68,7 @@ public class Barco : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(timeToShoot);
-            ShootBullet(GetComponent<FollowTarget>().directionFollow);
+            Instantiate(canon, canons.position, canons.rotation);
         }
     }
 }
